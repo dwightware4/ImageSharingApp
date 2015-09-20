@@ -1,0 +1,22 @@
+<% title = user.persisted? ? "Update Profile" : "Sign Up" %>
+<% action = user.persisted? ? user_url(user) : users_url %>
+<% method = user.persisted? ? "PUT" : "POST" %>
+<% button_text = user.persisted? ? "Sign In" : "Sign Up" %>
+
+<h1><%= title %></h1>
+
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= auth_token %>
+  <label for="username">Username:
+    <input type="text" name="user[username]" value="<%= user.username %>">
+  </label><br>
+
+  <label for="password">Password:
+    <input type="password" name="user[password]">
+  </label><br>
+
+  <input type="submit" value="<%= button_text %>">
+
+</form><br>
+<%= link_to "Sign In", new_session_url %>

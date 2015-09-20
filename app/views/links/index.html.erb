@@ -1,0 +1,9 @@
+<h1>Welcome, <%= current_user.username %>!</h1>
+
+  <% @links.each do |link| %>
+    <ul>
+      <li><%= link_to link.title, link_url(link) %></li>
+    </ul>
+  <% end %>
+
+<%= link_to "New Picture", new_link_url %>
